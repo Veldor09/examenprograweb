@@ -1,26 +1,121 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f1016;
+  --foreground: #e9eaef;
+  --card: #171a24;
+  --gold: #d6b36a;
+  --gold-dark: #b99442;
+  --available: #6c757d;
+  --occupied: #7a1f1f;
+  --selected: #12795c;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  background: radial-gradient(circle at top, #1d2235, #0b0c12 60%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.theatre-page {
+  min-height: 100vh;
+}
+
+.theatre-card,
+.footer-card {
+  background: linear-gradient(145deg, rgba(28, 33, 48, 0.95), rgba(17, 19, 29, 0.95));
+  border: 1px solid rgba(214, 179, 106, 0.25);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.stage-wrapper {
+  perspective: 700px;
+}
+
+.stage {
+  margin-inline: auto;
+  max-width: 680px;
+  background: linear-gradient(90deg, #d9dbe7, #f9f9ff, #d9dbe7);
+  color: #1e1f28;
+  letter-spacing: 0.35rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  transform: rotateX(-16deg);
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.row-label {
+  width: 1.5rem;
+  color: #e5dfd0;
+}
+
+.seat {
+  min-width: 2rem;
+  border-radius: 0.55rem;
+  font-weight: 600;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.seat:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+}
+
+.seat-available {
+  background: var(--available);
+  color: #f6f7fb;
+}
+
+.seat-occupied {
+  background: var(--occupied);
+  color: #fce3e3;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.seat-selected {
+  background: var(--selected);
+  color: #dbfff4;
+}
+
+.occupied-badge {
+  background: var(--occupied);
+  color: #ffe9e9;
+}
+
+.selected-badge {
+  background: var(--selected);
+  color: #ddfff4;
+}
+
+.reservation-panel {
+  background: rgba(12, 14, 22, 0.7);
+  border: 1px solid rgba(214, 179, 106, 0.2);
+}
+
+.form-select {
+  background-color: #f4f5fa;
+}
+
+.btn-gold {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  border: none;
+  color: #1f1a0d;
+  font-weight: 700;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(90deg, #a8863f, #caa454);
+  color: #171206;
+}
+
+.footer-card p {
+  color: rgba(233, 234, 239, 0.88);
 }
