@@ -1,21 +1,36 @@
 :root {
-  --background: #0f1016;
-  --foreground: #e9eaef;
-  --card: #171a24;
-  --gold: #d6b36a;
-  --gold-dark: #b99442;
-  --available: #6c757d;
-  --occupied: #7a1f1f;
-  --selected: #12795c;
+  --background: #0b1020;
+  --background-2: #121a33;
+  --foreground: #f4f7ff;
+  --card: rgba(18, 24, 43, 0.92);
+  --gold: #f0c674;
+  --gold-dark: #c99a3d;
+
+  --available: #3b82f6;
+  --available-border: #93c5fd;
+
+  --occupied: #ef4444;
+  --occupied-border: #fca5a5;
+
+  --selected: #10b981;
+  --selected-border: #6ee7b7;
+
+  --muted: #cbd5e1;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  background: radial-gradient(circle at top, #1d2235, #0b0c12 60%);
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, #24345f 0%, #121a33 35%, #0b1020 75%, #070b16 100%);
   color: var(--foreground);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -26,8 +41,10 @@ body {
 
 .theatre-card,
 .footer-card {
-  background: linear-gradient(145deg, rgba(28, 33, 48, 0.95), rgba(17, 19, 29, 0.95));
-  border: 1px solid rgba(214, 179, 106, 0.25);
+  background: linear-gradient(145deg, rgba(21, 29, 52, 0.96), rgba(11, 16, 32, 0.96));
+  border: 1px solid rgba(240, 198, 116, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border-radius: 1.25rem;
 }
 
 .text-gold {
@@ -35,87 +52,135 @@ body {
 }
 
 .stage-wrapper {
-  perspective: 700px;
+  perspective: 900px;
 }
 
 .stage {
   margin-inline: auto;
   max-width: 680px;
-  background: linear-gradient(90deg, #d9dbe7, #f9f9ff, #d9dbe7);
-  color: #1e1f28;
+  background: linear-gradient(90deg, #f4f4f7, #ffffff, #f4f4f7);
+  color: #1d2438;
   letter-spacing: 0.35rem;
-  font-weight: 700;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-  transform: rotateX(-16deg);
+  font-weight: 800;
+  border-radius: 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 18px 28px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(255, 255, 255, 0.1);
+  transform: rotateX(-14deg);
   text-shadow: 0 1px 0 #ffffff;
 }
 
 .row-label {
-  width: 1.5rem;
-  color: #e5dfd0;
+  width: 2rem;
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 800;
+  text-align: center;
 }
 
 .seat {
-  min-width: 2rem;
-  border-radius: 0.55rem;
-  font-weight: 600;
-  border: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.9rem 0.9rem 0.5rem 0.5rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
 .seat:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
 }
 
 .seat-available {
-  background: var(--available);
-  color: #f6f7fb;
+  background: linear-gradient(180deg, var(--available), #2563eb);
+  border-color: var(--available-border);
+  color: #ffffff;
 }
 
 .seat-occupied {
-  background: var(--occupied);
-  color: #fce3e3;
-  opacity: 0.65;
+  background: linear-gradient(180deg, var(--occupied), #b91c1c);
+  border-color: var(--occupied-border);
+  color: #ffffff;
   cursor: not-allowed;
+  opacity: 1;
 }
 
 .seat-selected {
-  background: var(--selected);
-  color: #dbfff4;
+  background: linear-gradient(180deg, var(--selected), #059669);
+  border-color: var(--selected-border);
+  color: #ffffff;
 }
 
 .occupied-badge {
   background: var(--occupied);
-  color: #ffe9e9;
+  color: #fff;
+  font-weight: 700;
 }
 
 .selected-badge {
   background: var(--selected);
-  color: #ddfff4;
+  color: #fff;
+  font-weight: 700;
+}
+
+.available-badge {
+  background: var(--available);
+  color: #fff;
+  font-weight: 700;
 }
 
 .reservation-panel {
-  background: rgba(12, 14, 22, 0.7);
-  border: 1px solid rgba(214, 179, 106, 0.2);
+  background: rgba(9, 13, 26, 0.85);
+  border: 1px solid rgba(240, 198, 116, 0.22);
+  border-radius: 1rem;
 }
 
-.form-select {
-  background-color: #f4f5fa;
+.form-select,
+.form-control {
+  background-color: #f8fafc;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
 }
 
 .btn-gold {
   background: linear-gradient(90deg, var(--gold-dark), var(--gold));
   border: none;
   color: #1f1a0d;
-  font-weight: 700;
+  font-weight: 800;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.22);
 }
 
 .btn-gold:hover {
-  background: linear-gradient(90deg, #a8863f, #caa454);
+  background: linear-gradient(90deg, #b8862f, #e7b75d);
   color: #171206;
 }
 
 .footer-card p {
-  color: rgba(233, 234, 239, 0.88);
+  color: rgba(244, 247, 255, 0.88);
+}
+
+.legend-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  display: inline-block;
+  margin-right: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.legend-available {
+  background: var(--available);
+}
+
+.legend-occupied {
+  background: var(--occupied);
+}
+
+.legend-selected {
+  background: var(--selected);
 }

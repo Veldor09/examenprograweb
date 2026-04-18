@@ -76,7 +76,7 @@ export default function Home() {
       <main className="container theatre-card p-4 p-lg-5 shadow-lg rounded-4 animate__animated animate__fadeIn">
         <header className="text-center mb-4">
           <p className="text-uppercase text-gold fw-semibold mb-2">Sala principal</p>
-          <h1 className="display-6 fw-bold mb-2">TEATRO-UNA · Reserva de Asientos</h1>
+          <h1 className="display-6 text-gold fw-bold mb-2">TEATRO-UNA · Reserva de Asientos</h1>
           <p className="text-light-emphasis mb-0">
             Viva una noche inolvidable seleccionando los mejores lugares.
           </p>
