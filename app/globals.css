@@ -1,13 +1,12 @@
 :root {
-  --bg-deep: #06070d;
-  --bg-mid: #11162a;
-  --card: rgba(16, 20, 34, 0.94);
-  --gold: #dfbf78;
-  --gold-soft: #c8a459;
-  --available: #91a4c8;
-  --occupied: #d05151;
-  --selected: #45c49b;
-  --text: #eef1f8;
+  --background: #0f1016;
+  --foreground: #e9eaef;
+  --card: #171a24;
+  --gold: #d6b36a;
+  --gold-dark: #b99442;
+  --available: #6c757d;
+  --occupied: #7a1f1f;
+  --selected: #12795c;
 }
 
 * {
@@ -16,215 +15,107 @@
 
 body {
   margin: 0;
-  color: var(--text);
+  background: radial-gradient(circle at top, #1d2235, #0b0c12 60%);
+  color: var(--foreground);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background:
-    radial-gradient(circle at 50% 4%, rgba(255, 227, 168, 0.17), transparent 28%),
-    linear-gradient(180deg, #161b32 0%, #0a0d17 45%, #05060a 100%);
 }
 
 .theatre-page {
   min-height: 100vh;
 }
 
-.theatre-shell,
+.theatre-card,
 .footer-card {
-  background: var(--card);
-  border: 1px solid rgba(223, 191, 120, 0.25);
+  background: linear-gradient(145deg, rgba(28, 33, 48, 0.95), rgba(17, 19, 29, 0.95));
+  border: 1px solid rgba(214, 179, 106, 0.25);
 }
 
 .text-gold {
   color: var(--gold);
 }
 
-.auditorium {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1rem;
-  padding: 1rem;
-  background: linear-gradient(180deg, rgba(24, 30, 50, 0.65), rgba(8, 10, 18, 0.85));
-  border: 1px solid rgba(151, 170, 214, 0.18);
-}
-
-.curtain {
-  position: absolute;
-  top: 0;
-  width: 14px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(166, 25, 43, 0.92),
-    rgba(166, 25, 43, 0.92) 7px,
-    rgba(118, 11, 26, 0.95) 7px,
-    rgba(118, 11, 26, 0.95) 14px
-  );
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.45);
-}
-
-.curtain-left {
-  left: 0;
-}
-
-.curtain-right {
-  right: 0;
-}
-
-.stage-zone {
-  perspective: 920px;
+.stage-wrapper {
+  perspective: 700px;
 }
 
 .stage {
-  max-width: 760px;
-  margin: 0 auto;
-  background: linear-gradient(90deg, #d4d8e7, #fdfdff 40%, #ecefff 60%, #ccd4ea);
-  color: #21263a;
-  letter-spacing: 0.28rem;
-  font-weight: 800;
-  transform: rotateX(-18deg);
-  box-shadow:
-    0 14px 24px rgba(0, 0, 0, 0.46),
-    0 0 30px rgba(251, 254, 255, 0.3);
-}
-
-.seating-area {
-  background:
-    linear-gradient(180deg, rgba(10, 13, 24, 0.92), rgba(5, 7, 14, 0.98)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.03),
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px,
-      transparent 65px
-    );
-  border: 1px solid rgba(145, 164, 200, 0.25);
+  margin-inline: auto;
+  max-width: 680px;
+  background: linear-gradient(90deg, #d9dbe7, #f9f9ff, #d9dbe7);
+  color: #1e1f28;
+  letter-spacing: 0.35rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  transform: rotateX(-16deg);
+  text-shadow: 0 1px 0 #ffffff;
 }
 
 .row-label {
-  width: 1.4rem;
-  text-align: center;
-  color: #fff1cf;
-  margin-right: 0.65rem;
-}
-
-.seat-row {
-  transform-origin: center;
-  animation: seatDepth 0.6s ease both;
-}
-
-@keyframes seatDepth {
-  from {
-    transform: scale(0.98) translateY(2px);
-    opacity: 0.85;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
-.seat-block {
-  min-width: 250px;
-}
-
-.aisle {
-  margin: 0 0.75rem;
-  width: 78px;
-  text-align: center;
-  font-size: 0.68rem;
-  letter-spacing: 0.08rem;
-  color: rgba(255, 255, 255, 0.55);
-  border-top: 1px dashed rgba(250, 250, 250, 0.35);
-  border-bottom: 1px dashed rgba(250, 250, 250, 0.35);
-  padding: 0.18rem 0;
+  width: 1.5rem;
+  color: #e5dfd0;
 }
 
 .seat {
-  width: 2rem;
-  height: 1.8rem;
+  min-width: 2rem;
   border-radius: 0.55rem;
-  font-weight: 800;
-  font-size: 0.82rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid transparent;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.34), 0 4px 9px rgba(0, 0, 0, 0.35);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.seat:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
 }
 
 .seat-available {
-  background: linear-gradient(180deg, #9bb2d9, #6f85ad);
-  border-color: #bed2f5;
-  color: #f8fbff;
+  background: var(--available);
+  color: #f6f7fb;
 }
 
 .seat-occupied {
-  background: linear-gradient(180deg, #ff7b7b, #bf3c3c);
-  border-color: #ffc1c1;
-  color: #fff3f3;
+  background: var(--occupied);
+  color: #fce3e3;
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .seat-selected {
-  background: linear-gradient(180deg, #65e7bb, #22a87f);
-  border-color: #bfffe7;
-  color: #f2fffb;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(88, 247, 196, 0.2), 0 4px 11px rgba(31, 229, 170, 0.35);
+  background: var(--selected);
+  color: #dbfff4;
 }
 
-.legend-available {
-  background: #6f85ad;
-  color: #f7faff;
+.occupied-badge {
+  background: var(--occupied);
+  color: #ffe9e9;
 }
 
-.legend-occupied {
-  background: #bf3c3c;
-  color: #fff2f2;
-}
-
-.legend-selected {
-  background: #22a87f;
-  color: #ebfff8;
+.selected-badge {
+  background: var(--selected);
+  color: #ddfff4;
 }
 
 .reservation-panel {
-  background: rgba(8, 11, 21, 0.8);
-  border: 1px solid rgba(223, 191, 120, 0.2);
+  background: rgba(12, 14, 22, 0.7);
+  border: 1px solid rgba(214, 179, 106, 0.2);
 }
 
 .form-select {
-  background-color: #f7f8fc;
+  background-color: #f4f5fa;
 }
 
 .btn-gold {
-  background: linear-gradient(90deg, #ae8b43, var(--gold));
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
   border: none;
-  color: #241a07;
+  color: #1f1a0d;
   font-weight: 700;
 }
 
 .btn-gold:hover {
-  background: linear-gradient(90deg, #987635, var(--gold-soft));
-  color: #1d1405;
+  background: linear-gradient(90deg, #a8863f, #caa454);
+  color: #171206;
 }
 
 .footer-card p {
-  color: rgba(238, 241, 248, 0.9);
-}
-
-@media (max-width: 768px) {
-  .seat-block {
-    min-width: auto;
-  }
-
-  .aisle {
-    width: 58px;
-    margin: 0 0.35rem;
-    font-size: 0.6rem;
-  }
-
-  .seat {
-    width: 1.75rem;
-    height: 1.55rem;
-    font-size: 0.76rem;
-  }
+  color: rgba(233, 234, 239, 0.88);
 }
